@@ -32,6 +32,9 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 
 builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<ApplicationContext>();
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
+                opt.TokenLifespan = TimeSpan.FromHours(2));
     
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
